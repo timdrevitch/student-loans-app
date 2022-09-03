@@ -13,8 +13,8 @@ const App:FC = () => {
         <Navbar/>
         <Router>
             <Context.Provider value={{
-                url: String,
-                setUrl: String
+                url,
+                setUrl
             }}>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
