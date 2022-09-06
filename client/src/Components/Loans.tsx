@@ -1,6 +1,6 @@
 import axios from "axios"
 import { FC, useContext, useEffect, useState } from "react"
-import { Context } from "../Context"
+import { AppContext } from "../Shared/AppContext"
 import { CompleteTodoButton, CreateTodoButton, DeleteTodoButton,
 FullTodosContainer, GreenSpan, RedSpan, TodoItem, TodosContainer,
 TodosInfo, TodosTitle, TodosTitleContainer } from "../Styles/HomeStyles"
@@ -9,7 +9,7 @@ import CreateLoan from "./CreateLoan"
 const Loans: FC = () => {
 
     //context
-    const {url, ifCreationFormIsOpen, setIfCreationFormIsOpen} = useContext(Context)
+    const {url, ifCreationFormIsOpen, setIfCreationFormIsOpen} = useContext(AppContext)
 
     //state
     const [loans, setLoans] = useState([])
