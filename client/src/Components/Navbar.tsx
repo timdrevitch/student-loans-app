@@ -2,10 +2,10 @@ import {HiMenu} from "react-icons/hi"
 import {useState, FC} from "react"
 import { FullNavbarContainer, MenuCloseButton, MenuContainer, NavButtonContainer, NavElementsContainer, NavHamburgerButton, NavHamburgerMenu, NavImage, NavImageContainer } from "../Styles/NavStyles"
 
-const Navbar:FC = () => {
+const Navbar: FC = () => {
 
     //state
-    const [menu, setMenu] = useState(false)
+    const [menu, setMenu] = useState<boolean>(false)
 
     //functions
     const openMenu = () => {setMenu(true)}

@@ -4,11 +4,12 @@ import { Context } from "../Context"
 import { CompleteTodoButton, CreateTodoButton, DeleteTodoButton,
 FullTodosContainer, GreenSpan, RedSpan, TodoItem, TodosContainer,
 TodosInfo, TodosTitle, TodosTitleContainer } from "../Styles/HomeStyles"
+import CreateLoan from "./CreateLoan"
 
-const Loans:FC = () => {
+const Loans: FC = () => {
 
     //context
-    const {url} = useContext(Context)
+    const {url, ifCreationFormIsOpen, setIfCreationFormIsOpen} = useContext(Context)
 
     //state
     const [loans, setLoans] = useState([])
@@ -21,31 +22,31 @@ const Loans:FC = () => {
     })
 
     //delete a loan
-    const removeLoan = (id) => {
+    const removeLoan = (id: String) => {
         axios.delete(`${url}/removeloan/${id}`)
             .then(response => console.log(response))
-            .catch(err => console.log(err))
+            .catch(error => console.warn(error))
     }
 
     //update a loan to be completed
-    const completeLoan = (id) => {
+    const completeLoan = (id: String) => {
         axios.put(`${url}/completeloan/${id}`)
             .then(response => console.log(response))
-            .catch(err => console.log(err))
+            .catch(error => console.warn(error))
     }
 
     //open creation form
     const openCreationForm = () => {
-        // setIfCreationFormIsOpen(true)
+        setIfCreationFormIsOpen(true)
     }
 
     return (
         <FullTodosContainer>
             <TodosTitleContainer>
-                <TodosTitle>Todos</TodosTitle>
-                <CreateTodoButton onClick={openCreationForm}>Create Task</CreateTodoButton>
+                <TodosTitle>Loans</TodosTitle>
+                <CreateTodoButton onClick={openCreationForm}>Create Loan</CreateTodoButton>
             </TodosTitleContainer>
-            {/* {ifCreationFormIsOpen && <CreateTodo/>} */}
+            {ifCreationFormIsOpen && <CreateLoan/>}
             <TodosContainer>
                 {loans.map((loan, index) => (
                     <TodosInfo key={index}>

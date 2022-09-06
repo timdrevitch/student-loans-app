@@ -1,7 +1,7 @@
 import {FC} from "react"
 import Loans from "../Components/Loans"
 
-const Home:FC = () => {
+const Home: FC = () => {
 
     return (
         <div style={{width: "100%", textAlign: "center"}}>
