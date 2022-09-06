@@ -1,5 +1,5 @@
-import { HiMenu } from "react-icons/hi";
-import { useState, FC } from "react";
+import { HiMenu } from "react-icons/hi"
+import { useState, FC } from "react"
 import {
     FullNavbarContainer,
     MenuCloseButton,
@@ -8,21 +8,20 @@ import {
     NavElementsContainer,
     NavHamburgerButton,
     NavHamburgerMenu,
-    NavImage,
     NavImageContainer
-} from "../Styles/NavStyles";
+} from "../Styles/NavStyles"
 
-const Navbar: FC = () => {
+const Navbar: FC = (): JSX.Element => {
     //state
-    const [menu, setMenu] = useState<boolean>(false);
+    const [menu, setMenu] = useState<boolean>(false)
 
     //functions
-    const openMenu = () => {
-        setMenu(true);
-    };
-    const closeMenu = () => {
-        setMenu(false);
-    };
+    const openMenu = (): void => {
+        setMenu(true)
+    }
+    const closeMenu = (): void => {
+        setMenu(false)
+    }
 
     return (
         <FullNavbarContainer>
@@ -48,7 +47,7 @@ const Navbar: FC = () => {
                 </MenuContainer>
             )}
         </FullNavbarContainer>
-    );
-};
+    )
+}
 
-export default Navbar;
+export default Navbar

@@ -1,27 +1,61 @@
 import axios from "axios"
 import { FC, ChangeEvent, useContext, useState } from "react"
+import { ILoan } from "../Interfaces/ILoan"
 import { AppContext } from "../Shared/AppContext"
 
-const CreateLoan: FC = () => {
+const CreateLoan: FC = (): JSX.Element => {
     //context
     const { url, setIfCreationFormIsOpen } = useContext(AppContext)
 
     //state
     const [loanName, setLoanName] = useState<string>("")
+    const [originalAmount, setOriginalAmount] = useState<number>(0)
+    const [currentAmount, setCurrentAmount] = useState<number>(0)
+    const [lender, setLender] = useState<string>("")
+    const [interestRate, setInterestRate] = useState<number>(0)
 
     //create a new loan
-    const createNewLoan = () => {
-        let data = { loan: loanName }
+    const createNewLoan = (): void => {
+        let loanData: ILoan = {
+            _id: null,
+            loan: loanName,
+            originalAmount: originalAmount,
+            currentAmount: currentAmount,
+            lender: lender,
+            interestRate: interestRate
+        }
         axios
-            .post(`${url}/createloan`, data)
-            .then((response) => console.log(response.data))
-            .catch((error) => console.warn(error))
+            .post(`${url}/createloan`, loanData)
+            .then((response: any) => console.log(response.data))
+            .catch((error: Error) => console.warn(error))
             .then(() => setIfCreationFormIsOpen(false))
     }
 
-    //Change state on input field changes
-    const changeLoan = (e: ChangeEvent<HTMLInputElement>) =>
-        setLoanName(e.target.value)
+    const changeLoan = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.name === "loan") {
+            setLoanName(e.target.value)
+        }
+    }
+    const changeOriginalAmount = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.name === "originalAmount") {
+            setOriginalAmount(Number(e.target.value))
+        }
+    }
+    const changeCurrentAmount = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.name === "currentAmount") {
+            setCurrentAmount(Number(e.target.value))
+        }
+    }
+    const changeLender = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.name === "lender") {
+            setLender(e.target.value)
+        }
+    }
+    const changeInterestRate = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (e.target.name === "interestRate") {
+            setInterestRate(Number(e.target.value))
+        }
+    }
 
     return (
         <div
@@ -39,6 +73,46 @@ const CreateLoan: FC = () => {
                     name="loan"
                     value={loanName}
                     onChange={changeLoan}
+                    required
+                />
+                <br />
+                <label htmlFor="originalAmount">Original amount: </label>
+                <input
+                    type="number"
+                    id="originalAmount"
+                    name="originalAmount"
+                    value={originalAmount}
+                    onChange={changeOriginalAmount}
+                    required
+                />
+                <br />
+                <label htmlFor="currentAmount">Current amount: </label>
+                <input
+                    type="number"
+                    id="currentAmount"
+                    name="currentAmount"
+                    value={currentAmount}
+                    onChange={changeCurrentAmount}
+                    required
+                />
+                <br />
+                <label htmlFor="lender">Lender: </label>
+                <input
+                    type="text"
+                    id="lender"
+                    name="lender"
+                    value={lender}
+                    onChange={changeLender}
+                    required
+                />
+                <br />
+                <label htmlFor="interestRate">Interest Rate: </label>
+                <input
+                    type="number"
+                    id="interestRate"
+                    name="interestRate"
+                    value={interestRate}
+                    onChange={changeInterestRate}
                     required
                 />
                 <br />
