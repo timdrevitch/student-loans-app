@@ -3,17 +3,16 @@ import { FC, useContext, useEffect, useState } from "react"
 import { ILoan } from "../Interfaces/ILoan"
 import { AppContext } from "../Shared/AppContext"
 import {
-    CompleteTodoButton,
-    CreateTodoButton,
-    DeleteTodoButton,
-    FullTodosContainer,
+    CompleteLoanButton,
+    CreateLoanButton,
+    DeleteLoanButton,
+    FullLoansContainer,
     GreenSpan,
-    RedSpan,
-    TodoItem,
-    TodosContainer,
-    TodosInfo,
-    TodosTitle,
-    TodosTitleContainer
+    LoanItem,
+    LoansContainer,
+    LoansInfo,
+    LoansTitle,
+    LoansTitleContainer
 } from "../Styles/HomeStyles"
 import CreateLoan from "./CreateLoan"
 
@@ -55,41 +54,41 @@ const Loans: FC = (): JSX.Element => {
     }
 
     return (
-        <FullTodosContainer>
-            <TodosTitleContainer>
-                <TodosTitle>Loans ({loans.length})</TodosTitle>
-                <CreateTodoButton onClick={openCreationForm}>
+        <FullLoansContainer>
+            <LoansTitleContainer>
+                <LoansTitle>Loans ({loans.length})</LoansTitle>
+                <CreateLoanButton onClick={openCreationForm}>
                     Create Loan
-                </CreateTodoButton>
-            </TodosTitleContainer>
+                </CreateLoanButton>
+            </LoansTitleContainer>
             {ifCreationFormIsOpen && <CreateLoan />}
-            <TodosContainer>
+            <LoansContainer>
                 {loans.map((loan, index) => (
-                    <TodosInfo key={index}>
-                        <TodoItem>
+                    <LoansInfo key={index}>
+                        <LoanItem>
                             <h5>
                                 Loan: <GreenSpan>{loan.loan}</GreenSpan>
                             </h5>
-                        </TodoItem>
-                        <TodoItem>
+                        </LoanItem>
+                        <LoanItem>
                             <h5>
                                 Interest Rate:{" "}
                                 <GreenSpan>{loan.interestRate}%</GreenSpan>
                             </h5>
-                        </TodoItem>
-                        <TodoItem>
+                        </LoanItem>
+                        <LoanItem>
                             <h5>
                                 Original Amount:{" "}
                                 <GreenSpan>${loan.originalAmount}</GreenSpan>
                             </h5>
-                        </TodoItem>
-                        <TodoItem>
+                        </LoanItem>
+                        <LoanItem>
                             <h5>
                                 Current Amount:{" "}
                                 <GreenSpan>${loan.currentAmount}</GreenSpan>
                             </h5>
-                        </TodoItem>
-                        <TodoItem>
+                        </LoanItem>
+                        <LoanItem>
                             <h5>
                                 Daily Accrual:{" "}
                                 <GreenSpan>
@@ -101,21 +100,46 @@ const Loans: FC = (): JSX.Element => {
                                     ).toFixed(2)}
                                 </GreenSpan>
                             </h5>
-                        </TodoItem>
-                        <TodoItem>
+                        </LoanItem>
+                        <LoanItem>
+                            <h5>
+                                Monthly Accrual:{" "}
+                                <GreenSpan>
+                                    $
+                                    {(
+                                        (loan.currentAmount *
+                                            (loan.interestRate / 100)) /
+                                        12
+                                    ).toFixed(2)}
+                                </GreenSpan>
+                            </h5>
+                        </LoanItem>
+                        <LoanItem>
+                            <h5>
+                                Yearly Accrual:{" "}
+                                <GreenSpan>
+                                    $
+                                    {(
+                                        loan.currentAmount *
+                                        (loan.interestRate / 100)
+                                    ).toFixed(2)}
+                                </GreenSpan>
+                            </h5>
+                        </LoanItem>
+                        <LoanItem>
                             <h5>
                                 Lender: <GreenSpan>{loan.lender}</GreenSpan>
                             </h5>
-                        </TodoItem>
-                        <DeleteTodoButton onClick={() => removeLoan(loan._id)}>
+                        </LoanItem>
+                        <DeleteLoanButton onClick={() => removeLoan(loan._id)}>
                             Remove
-                        </DeleteTodoButton>
-                        {/* <CompleteTodoButton onClick={() => completeLoan(loan._id)}>Mark loan as complete</CompleteTodoButton> */}
-                    </TodosInfo>
+                        </DeleteLoanButton>
+                        {/* <CompleteLoanButton onClick={() => completeLoan(loan._id)}>Mark loan as complete</CompleteLoanButton> */}
+                    </LoansInfo>
                 ))}
-            </TodosContainer>
+            </LoansContainer>
             <br />
-        </FullTodosContainer>
+        </FullLoansContainer>
     )
 }
 
