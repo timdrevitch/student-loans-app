@@ -1,5 +1,5 @@
 export interface ILoan {
-    _id: string | null
+    _id?: string
     loan: string
     originalAmount: number
     currentAmount: number

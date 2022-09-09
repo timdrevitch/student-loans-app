@@ -17,7 +17,6 @@ const CreateLoan: FC = (): JSX.Element => {
     //create a new loan
     const createNewLoan = (): void => {
         let loanData: ILoan = {
-            _id: null,
             loan: loanName,
             originalAmount: originalAmount,
             currentAmount: currentAmount,
