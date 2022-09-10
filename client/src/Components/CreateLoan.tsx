@@ -8,7 +8,7 @@ const CreateLoan: FC = (): JSX.Element => {
     const { url, setIfCreationFormIsOpen } = useContext(AppContext)
 
     //state
-    const [loanName, setLoanName] = useState<string>("")
+    const [loan, setLoan] = useState<string>("")
     const [originalAmount, setOriginalAmount] = useState<number>(0)
     const [currentAmount, setCurrentAmount] = useState<number>(0)
     const [lender, setLender] = useState<string>("")
@@ -17,7 +17,7 @@ const CreateLoan: FC = (): JSX.Element => {
     //create a new loan
     const createNewLoan = (): void => {
         let loanData: ILoan = {
-            loan: loanName,
+            loan: loan,
             originalAmount: originalAmount,
             currentAmount: currentAmount,
             lender: lender,
@@ -30,32 +30,6 @@ const CreateLoan: FC = (): JSX.Element => {
             .then(() => setIfCreationFormIsOpen(false))
     }
 
-    const changeLoan = (e: ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.name === "loan") {
-            setLoanName(e.target.value)
-        }
-    }
-    const changeOriginalAmount = (e: ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.name === "originalAmount") {
-            setOriginalAmount(Number(e.target.value))
-        }
-    }
-    const changeCurrentAmount = (e: ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.name === "currentAmount") {
-            setCurrentAmount(Number(e.target.value))
-        }
-    }
-    const changeLender = (e: ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.name === "lender") {
-            setLender(e.target.value)
-        }
-    }
-    const changeInterestRate = (e: ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.name === "interestRate") {
-            setInterestRate(Number(e.target.value))
-        }
-    }
-
     return (
         <div
             style={{
@@ -65,55 +39,65 @@ const CreateLoan: FC = (): JSX.Element => {
                 margin: "5rem 10px 0 10px"
             }}>
             <form onSubmit={createNewLoan}>
-                <label htmlFor="loan">Loan name: </label>
-                <input
-                    type="text"
-                    id="loan"
-                    name="loan"
-                    value={loanName}
-                    onChange={changeLoan}
-                    required
-                />
+                <label>
+                    Loan name:
+                    <input
+                        required
+                        type="text"
+                        value={loan}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setLoan(e.target.value)
+                        }
+                    />
+                </label>
                 <br />
-                <label htmlFor="originalAmount">Original amount: </label>
-                <input
-                    type="number"
-                    id="originalAmount"
-                    name="originalAmount"
-                    value={originalAmount}
-                    onChange={changeOriginalAmount}
-                    required
-                />
+                <label>
+                    Original amount:
+                    <input
+                        required
+                        type="number"
+                        value={originalAmount}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setOriginalAmount(Number(e.target.value))
+                        }
+                    />
+                </label>
                 <br />
-                <label htmlFor="currentAmount">Current amount: </label>
-                <input
-                    type="number"
-                    id="currentAmount"
-                    name="currentAmount"
-                    value={currentAmount}
-                    onChange={changeCurrentAmount}
-                    required
-                />
+                <label>
+                    Current amount:
+                    <input
+                        required
+                        type="number"
+                        value={currentAmount}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setCurrentAmount(Number(e.target.value))
+                        }
+                    />
+                </label>
                 <br />
-                <label htmlFor="lender">Lender: </label>
-                <input
-                    type="text"
-                    id="lender"
-                    name="lender"
-                    value={lender}
-                    onChange={changeLender}
-                    required
-                />
+                <label>
+                    Lender:
+                    <input
+                        required
+                        type="text"
+                        value={lender}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setLender(e.target.value)
+                        }
+                    />
+                </label>
                 <br />
-                <label htmlFor="interestRate">Interest Rate: </label>
-                <input
-                    type="number"
-                    id="interestRate"
-                    name="interestRate"
-                    value={interestRate}
-                    onChange={changeInterestRate}
-                    required
-                />
+                <label>
+                    Interest Rate:
+                    <input
+                        required
+                        type="number"
+                        value={interestRate}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            setInterestRate(Number(e.target.value))
+                        }
+                    />
+                </label>
                 <br />
                 <button
                     onClick={() => setIfCreationFormIsOpen(false)}

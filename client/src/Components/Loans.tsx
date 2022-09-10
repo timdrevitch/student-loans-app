@@ -3,7 +3,6 @@ import { FC, useContext, useEffect, useState } from "react"
 import { ILoan } from "../Interfaces/ILoan"
 import { AppContext } from "../Shared/AppContext"
 import {
-    CompleteLoanButton,
     CreateLoanButton,
     DeleteLoanButton,
     FullLoansContainer,
@@ -27,37 +26,24 @@ const Loans: FC = (): JSX.Element => {
     //get all loans sorted by most recent first
     useEffect(() => {
         axios
-            .get(`${url}/getloans`)
-            .then((response: any) => setLoans(response.data))
-            .catch((error: Error) => console.warn(error))
+            .get<ILoan[]>(`${url}/getloans`)
+            .then((response) => setLoans(response.data))
+            .catch((error) => console.warn(error))
     })
 
     //delete a loan
     const removeLoan = (id: String): void => {
         axios
-            .delete(`${url}/removeloan/${id}`)
+            .delete<ILoan>(`${url}/removeloan/${id}`)
             .then((response) => console.log(response))
             .catch((error) => console.warn(error))
-    }
-
-    // //update a loan to be completed
-    // const completeLoan = (id: String):void => {
-    //     axios
-    //         .put(`${url}/completeloan/${id}`)
-    //         .then((response) => console.log(response))
-    //         .catch((error) => console.warn(error))
-    // }
-
-    //open creation form
-    const openCreationForm = (): void => {
-        setIfCreationFormIsOpen(true)
     }
 
     return (
         <FullLoansContainer>
             <LoansTitleContainer>
                 <LoansTitle>Loans ({loans.length})</LoansTitle>
-                <CreateLoanButton onClick={openCreationForm}>
+                <CreateLoanButton onClick={() => setIfCreationFormIsOpen(true)}>
                     Create Loan
                 </CreateLoanButton>
             </LoansTitleContainer>
@@ -134,7 +120,6 @@ const Loans: FC = (): JSX.Element => {
                         <DeleteLoanButton onClick={() => removeLoan(loan._id)}>
                             Remove
                         </DeleteLoanButton>
-                        {/* <CompleteLoanButton onClick={() => completeLoan(loan._id)}>Mark loan as complete</CompleteLoanButton> */}
                     </LoansInfo>
                 ))}
             </LoansContainer>

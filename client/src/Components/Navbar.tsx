@@ -15,14 +15,6 @@ const Navbar: FC = (): JSX.Element => {
     //state
     const [menu, setMenu] = useState<boolean>(false)
 
-    //functions
-    const openMenu = (): void => {
-        setMenu(true)
-    }
-    const closeMenu = (): void => {
-        setMenu(false)
-    }
-
     return (
         <FullNavbarContainer>
             <NavElementsContainer>
@@ -33,14 +25,14 @@ const Navbar: FC = (): JSX.Element => {
                     <div>Loans</div>
                 </NavButtonContainer>
                 <NavHamburgerMenu>
-                    <NavHamburgerButton onClick={openMenu}>
+                    <NavHamburgerButton onClick={() => setMenu(true)}>
                         <HiMenu size="30" />
                     </NavHamburgerButton>
                 </NavHamburgerMenu>
             </NavElementsContainer>
             {menu && (
                 <MenuContainer>
-                    <MenuCloseButton onClick={closeMenu}>
+                    <MenuCloseButton onClick={() => setMenu(false)}>
                         &#10006;
                     </MenuCloseButton>
                     <div>Loans</div>
