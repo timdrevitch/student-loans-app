@@ -1,5 +1,12 @@
 import axios from "axios"
-import { FC, ChangeEvent, useContext, useState, WheelEvent } from "react"
+import {
+    FC,
+    ChangeEvent,
+    useContext,
+    useState,
+    WheelEvent,
+    FormEvent
+} from "react"
 import { ILoan } from "../Interfaces/ILoan"
 import { AppContext } from "../Shared/AppContext"
 import { CancelButton, SubmitButton } from "../Styles/CreateLoanStyles"
@@ -16,7 +23,8 @@ const CreateLoan: FC = (): JSX.Element => {
     const [lender, setLender] = useState<string>("")
     const [interestRate, setInterestRate] = useState<number>(0)
 
-    const createNewLoan = (): void => {
+    const createNewLoan = (e: FormEvent<HTMLFormElement>): void => {
+        e.preventDefault()
         let loanData: ILoan = {
             loan: loan,
             originalAmount: originalAmount,
