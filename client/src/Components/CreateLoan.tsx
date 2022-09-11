@@ -14,7 +14,6 @@ const CreateLoan: FC = (): JSX.Element => {
     const [lender, setLender] = useState<string>("")
     const [interestRate, setInterestRate] = useState<number>(0)
 
-    //create a new loan
     const createNewLoan = (): void => {
         let loanData: ILoan = {
             loan: loan,
@@ -24,9 +23,9 @@ const CreateLoan: FC = (): JSX.Element => {
             interestRate: interestRate
         }
         axios
-            .post(`${url}/createloan`, loanData)
-            .then((response: any) => console.log(response.data))
-            .catch((error: Error) => console.warn(error))
+            .post<ILoan>(`${url}/createloan`, loanData)
+            .then((response) => console.log(response.data))
+            .catch((error) => console.warn(error))
             .then(() => setIfCreationFormIsOpen(false))
     }
 

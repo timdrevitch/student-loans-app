@@ -23,7 +23,6 @@ const Loans: FC = (): JSX.Element => {
     //state
     const [loans, setLoans] = useState<ILoan[]>([])
 
-    //get all loans sorted by most recent first
     useEffect(() => {
         axios
             .get<ILoan[]>(`${url}/getloans`)
@@ -31,7 +30,6 @@ const Loans: FC = (): JSX.Element => {
             .catch((error) => console.warn(error))
     })
 
-    //delete a loan
     const removeLoan = (id: String): void => {
         axios
             .delete<ILoan>(`${url}/removeloan/${id}`)
