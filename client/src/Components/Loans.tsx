@@ -6,13 +6,13 @@ import {
     CreateLoanButton,
     DeleteLoanButton,
     FullLoansContainer,
-    GreenSpan,
     LoanItem,
     LoansContainer,
     LoansInfo,
     LoansTitle,
     LoansTitleContainer
 } from "../Styles/HomeStyles"
+import { GreenSpan } from "../Styles/SharedStyles"
 import CreateLoan from "./CreateLoan"
 
 const Loans: FC = (): JSX.Element => {
@@ -47,8 +47,8 @@ const Loans: FC = (): JSX.Element => {
             </LoansTitleContainer>
             {ifCreationFormIsOpen && <CreateLoan />}
             <LoansContainer>
-                {loans.map((loan, index) => (
-                    <LoansInfo key={index}>
+                {loans.map((loan: ILoan) => (
+                    <LoansInfo key={loan._id}>
                         <LoanItem>
                             <h5>
                                 Loan: <GreenSpan>{loan.loan}</GreenSpan>

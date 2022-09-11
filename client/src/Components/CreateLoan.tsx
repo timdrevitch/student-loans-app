@@ -1,7 +1,9 @@
 import axios from "axios"
-import { FC, ChangeEvent, useContext, useState } from "react"
+import { FC, ChangeEvent, useContext, useState, WheelEvent } from "react"
 import { ILoan } from "../Interfaces/ILoan"
 import { AppContext } from "../Shared/AppContext"
+import { CancelButton, SubmitButton } from "../Styles/CreateLoanStyles"
+import { GreenSpan } from "../Styles/SharedStyles"
 
 const CreateLoan: FC = (): JSX.Element => {
     //context
@@ -35,11 +37,14 @@ const CreateLoan: FC = (): JSX.Element => {
                 backgroundColor: "#1a1d22",
                 border: "1px solid black",
                 borderRadius: "10px",
-                margin: "5rem 10px 0 10px"
+                margin: "5rem 10px 0 10px",
+                paddingTop: "15px",
+                paddingRight: "25%",
+                textAlign: "right"
             }}>
             <form onSubmit={createNewLoan}>
                 <label>
-                    Loan name:
+                    Loan name:{" "}
                     <input
                         required
                         type="text"
@@ -51,11 +56,16 @@ const CreateLoan: FC = (): JSX.Element => {
                 </label>
                 <br />
                 <label>
-                    Original amount:
+                    Original amount: <GreenSpan>$</GreenSpan>
                     <input
+                        style={{ textAlign: "right" }}
                         required
                         type="number"
+                        step="0.01"
                         value={originalAmount}
+                        onWheel={(e: WheelEvent<HTMLInputElement>) =>
+                            e.currentTarget.blur()
+                        }
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setOriginalAmount(Number(e.target.value))
                         }
@@ -63,11 +73,16 @@ const CreateLoan: FC = (): JSX.Element => {
                 </label>
                 <br />
                 <label>
-                    Current amount:
+                    Current amount: <GreenSpan>$</GreenSpan>
                     <input
+                        style={{ textAlign: "right" }}
                         required
                         type="number"
+                        step="0.01"
                         value={currentAmount}
+                        onWheel={(e: WheelEvent<HTMLInputElement>) =>
+                            e.currentTarget.blur()
+                        }
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setCurrentAmount(Number(e.target.value))
                         }
@@ -75,7 +90,7 @@ const CreateLoan: FC = (): JSX.Element => {
                 </label>
                 <br />
                 <label>
-                    Lender:
+                    Lender:{" "}
                     <input
                         required
                         type="text"
@@ -87,47 +102,27 @@ const CreateLoan: FC = (): JSX.Element => {
                 </label>
                 <br />
                 <label>
-                    Interest Rate:
+                    Interest Rate:{" "}
                     <input
+                        style={{ textAlign: "right" }}
                         required
                         type="number"
+                        step="0.001"
+                        onWheel={(e: WheelEvent<HTMLInputElement>) =>
+                            e.currentTarget.blur()
+                        }
                         value={interestRate}
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setInterestRate(Number(e.target.value))
                         }
                     />
+                    <GreenSpan>%</GreenSpan>
                 </label>
                 <br />
-                <button
-                    onClick={() => setIfCreationFormIsOpen(false)}
-                    style={{
-                        cursor: "pointer",
-                        display: "inline-block",
-                        backgroundColor: "darkred",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "3px",
-                        padding: ".5rem 1rem",
-                        margin: "1rem",
-                        fontFamily: "Trebuchet MS, sans-serif"
-                    }}>
+                <CancelButton onClick={() => setIfCreationFormIsOpen(false)}>
                     Cancel
-                </button>
-                <input
-                    type="submit"
-                    value="Submit new task"
-                    style={{
-                        cursor: "pointer",
-                        display: "inline-block",
-                        backgroundColor: "green",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "3px",
-                        padding: ".5rem 1rem",
-                        margin: "1rem",
-                        fontFamily: "Trebuchet MS, sans-serif"
-                    }}
-                />
+                </CancelButton>
+                <SubmitButton type="submit" value="Submit New Loan" />
             </form>
         </div>
     )

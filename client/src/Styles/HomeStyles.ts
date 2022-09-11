@@ -61,9 +61,3 @@ export const LoanItem = styled.div`
     display: inline-block;
     margin: 1rem;
 `
-export const GreenSpan = styled.span`
-    color: green;
-`
-export const RedSpan = styled.span`
-    color: red;
-`
