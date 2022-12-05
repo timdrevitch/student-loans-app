@@ -6,7 +6,7 @@ export const FullLoansContainer = styled.div`
     border: 1px solid black;
     border-radius: 10px;
     padding: 2rem;
-    background-color: #282c34;
+    background-color: #d68b52; //#282c34;
 `
 export const LoansTitleContainer = styled.div`
     position: absolute;
@@ -30,7 +30,7 @@ export const LoansContainer = styled.div`
     margin-top: 5rem;
 `
 export const LoansInfo = styled.div`
-    background-color: #1a1d22;
+    background-color: #f7c59f; //#1a1d22;
     border: 1px solid black;
     border-radius: 10px;
     margin: 10px;

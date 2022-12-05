@@ -1,13 +1,13 @@
 body {
-  margin: 0;
-  font-family: Trebuchet MS, "sans-serif";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #1a1d22;
-  color: white;
+    margin: 0;
+    font-family: Trebuchet MS, "sans-serif";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f7c59f; /*#1a1d22;*/
+    color: black; /*#1a1d22;*/
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }

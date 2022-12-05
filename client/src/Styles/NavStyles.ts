@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const NavImage = styled.img`
     width: 100%;
     height: 2rem;
-    margin: .75rem 1rem;
+    margin: 0.75rem 1rem;
     display: inline;
 `
 export const NavImageContainer = styled.div`
@@ -20,7 +20,7 @@ export const MenuContainer = styled.div`
     background: #282c34;
     width: 120px;
     float: right;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,.8);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
     margin-top: -3px;
     text-align: left;
 `
@@ -37,8 +37,8 @@ export const FullNavbarContainer = styled.div`
     margin-top: 0;
     position: sticky;
     top: 0;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,.8);
-    background-color: #282c34; //dark gray background
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    background-color: #f7c59f; //#282c34; //dark gray background
 `
 export const FullWholesaleNavbarContainer = styled.div`
     z-index: 500;
@@ -47,8 +47,8 @@ export const FullWholesaleNavbarContainer = styled.div`
     margin-top: 0;
     position: sticky;
     top: 0;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,.8);
-    background-color: #282c34; //dark gray background
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    background-color: #f7c59f; //#282c34; //dark gray background
 `
 export const NavButtonContainer = styled.div`
     position: absolute;
@@ -67,7 +67,7 @@ export const NavHamburgerMenu = styled.div`
         position: absolute;
         background: transparent;
         width: 95%;
-        margin: .75rem auto;
+        margin: 0.75rem auto;
         text-align: right;
         float: right;
     }

@@ -42,7 +42,7 @@ const CreateLoan: FC = (): JSX.Element => {
     return (
         <div
             style={{
-                backgroundColor: "#1a1d22",
+                backgroundColor: "#f7c59f",
                 border: "1px solid black",
                 borderRadius: "10px",
                 margin: "5rem 10px 0 10px",

@@ -21,9 +21,9 @@ const Navbar: FC = (): JSX.Element => {
                 <NavImageContainer>
                     <h2>Student Loans App</h2>
                 </NavImageContainer>
-                <NavButtonContainer>
+                {/* <NavButtonContainer>
                     <div>Loans</div>
-                </NavButtonContainer>
+                </NavButtonContainer> */}
                 <NavHamburgerMenu>
                     <NavHamburgerButton onClick={() => setMenu(true)}>
                         <HiMenu size="30" />
