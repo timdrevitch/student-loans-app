@@ -31,7 +31,7 @@
         "typescript": "^5.2.2"
     },
     "devDependencies": {
-        "concurrently": "^8.2.1",
+        "concurrently": "^8.2.2",
         "nodemon": "^2.0.22"
     }
 }
