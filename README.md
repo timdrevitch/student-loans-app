@@ -2,6 +2,8 @@
 
 **Welcome to the Student Loans App!**
 
+🔸 **Watch a video of this app running here:** https://www.youtube.com/watch?v=UlhVoZHbtq0
+
 🔸 **Location:** no url yet
 
 🔸 **Author:** Tim Drevitch
