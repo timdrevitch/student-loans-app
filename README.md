@@ -1,8 +1,8 @@
-# student-loans-app
+<h1 align="center">student-loans-app</h1>
 
-**Welcome to the Student Loans App!**
+<p align="center">Welcome to the Student Loans App!</p>
 
-🔸 **Watch a video of this app running here:** https://www.youtube.com/watch?v=UlhVoZHbtq0
+🔸 **Watch a video walkthrough of this web application:** https://www.youtube.com/watch?v=UlhVoZHbtq0
 
 🔸 **Location:** no url yet
 
