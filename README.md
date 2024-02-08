@@ -11,7 +11,7 @@
 🔸 **Contributers:** Tim Drevitch
 
 🔸 **Description:**
-This is an application created to show my ability to put together a front-to-back full stack application using the MERN development stack. This is my first time practicing using Typescript in a project as well.
+This is an application created to show my ability to put together a front-to-back full stack application using the MERN development stack. This is my first time practicing using TypeScript in a project as well.
 
 🔸 **Stack:**
 This application is using the MERN development stack. For the frontend/client, I am using
