@@ -26,8 +26,8 @@
         "dotenv": "^16.5.0",
         "express": "^5.2.1",
         "mongoose": "^9.1.4",
-        "multer": "^2.2.0",
-        "multer-gridfs-storage": "^5.0.2",
+        "multer": "^2.3.0",
+        "multer-gridfs-storage": "^6.2.1",
         "typescript": "^5.9.3"
     },
     "devDependencies": {
